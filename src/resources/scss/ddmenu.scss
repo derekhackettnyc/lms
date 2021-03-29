@@ -1,0 +1,220 @@
+.toggle, [id^=drop] {
+	display: none;
+}
+
+.menu-icon-container {position: absolute; top: 10px; left: 10px; display: inline-block; padding: 1rem; cursor: pointer;}	
+.bar1, .bar2, .bar3 {width: 25px; height: 3px; background-color: #002664; margin: 4px 0; transition: 0.4s;}
+.change .bar1 {-webkit-transform: rotate(-45deg) translate(-6px, 6px); transform: rotate(-45deg) translate(-6px, 6px);}
+.change .bar2 {opacity: 0;}
+.change .bar3 {-webkit-transform: rotate(45deg) translate(-3px, -4px); transform: rotate(45deg) translate(-3px, -4px);}
+
+
+.overlay {height: 100%; width:0%; position: fixed; top: 17rem; left: 0px; background-color: white; overflow-x: hidden;  transition: all .2s;  opacity: 1; transition-delay: .2s; }
+.overlay.opened {width:100%;}
+.overlay-content {position: relative; top: 0%; opacity: 1; transition:.1s; } 
+.overlay.opened .overlay-content {opacity: .8;}
+
+@include respond(tablet-landscape) {
+
+
+    .menu-icon-container {display: none;}
+    .overlay {
+        padding:1rem; 
+        width: 100% !important; 
+        transition: none !important;    
+        background:none; 
+        overflow-x: visible; 
+        top:65px; 
+        position: absolute;
+        height:0px;  
+    }
+
+    
+}
+
+
+
+.subchild.close {
+    display:none;
+}
+
+.subchild.open {
+    display:block;
+}
+
+.non-touch.selection-made > li:hover ul {
+    display:none;
+}
+
+.navigation {
+
+
+
+
+	&__background {
+		height: 6rem;
+		width:6rem;
+		border-radius: 50%;
+		position: fixed;
+		top:3.5%;
+		right:3.5%;
+		background-image: radial-gradient($yellow, yellow);
+		z-index: 10;
+
+    
+		
+		transition: transform .8s cubic-bezier(0.86,0,0.7,1);
+
+	}    
+
+    // border:2px solid red;
+
+    margin-top: 5rem;
+
+    @include respond(tablet-landscape) {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1rem;
+    }
+
+    &__checkbox {
+        display: none;       
+    }
+
+
+    &__parent {
+        flex:1;
+        text-align: center;
+        position: relative;
+
+        @include respond(tablet-portrait) {
+            padding:1rem;
+        }
+
+        @include respond(tablet-landscape) {
+            padding:1rem;
+            .non-touch &:hover > ul {
+                display:block;
+            }
+           
+        }        
+
+
+    }
+
+    &__child {
+        display: none;
+        background-color: whitesmoke;
+        border-radius: 5px;
+        padding:1rem;
+
+        @include respond(tablet-landscape) {
+
+            position: absolute;
+            top:90%;
+            left:0;
+            width:100%;
+        }
+
+        &--sub {
+            position: static;
+        }
+
+        & li:not(:last-child) {
+            border-bottom: solid .1rem #ccc;
+
+}
+        &--opened {
+            display:block;
+        }
+
+        &--watches {
+            margin-top: -2rem;
+        }
+    }
+
+
+
+    &__label {
+        display:none; 
+        width:100%; 
+        cursor: pointer; 
+        font-size: 3rem;
+        color:$slate;
+        @include respond(tablet-landscape) {
+            color:white;
+        }
+    }
+
+    &__link {
+
+                
+        width: 100%; 
+        color: darkslategray;
+        font-size:1.6rem;
+        padding: 1rem;
+        text-decoration: none;
+		&:link, &:visited {
+            display: inline-block;
+
+        }
+
+		&:hover, &:active {
+			color:  #0080b0;
+        }
+
+        &--main {
+
+            @include respond(tablet-landscape) {
+                color:white;
+            }
+        }
+
+        
+    }
+
+
+
+    &__button {
+        background-color:white;
+        border: none;
+        font-size: 4rem;
+        font-weight: 400;
+        letter-spacing: initial;
+        // line-height: 3rem;
+        text-transform: none;
+        position: relative;
+        padding: 1rem;
+        color:  #0080b0;
+        border-radius: none;
+        transition: none;
+        width:100%;
+        max-width: initial;
+        display:inline-block;
+        text-decoration: none;
+
+
+        @include respond(tablet-landscape) {
+            background:none;
+            font-size: 2rem;
+        }        
+
+        &--sub {
+            font-size:2.6rem;
+            @include respond(tablet-landscape) {
+                color:$falured;
+                font-weight: 600;
+                font-size: 2rem;
+                color: $sapphire;
+            } 
+        }
+
+        &--signin {
+            color: whitesmoke;
+            padding: 0;
+        }
+
+    }
+
+
+}

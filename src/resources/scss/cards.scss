@@ -1,0 +1,277 @@
+
+
+.blog-entry {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d8d8d8;
+  box-shadow: 0px 2px 24px 0px rgba(53,55,64,0.1);
+  background-color: white;
+  color:white;
+  width:300px;
+  word-wrap: break-word;
+  
+  @include respond(phone-plus) {
+      width: 400px;
+  }
+
+  &--active {
+
+    border:6px solid yellow;
+    cursor: pointer;
+    
+  }
+
+
+  &__paragraph {
+      padding: 5rem;
+  }
+
+  &__content {
+      color: #747d88;
+      padding:3rem;
+      
+      & > * {
+          margin-top: 1rem;
+      }        
+  }
+
+  &__title {
+      text-transform: capitalize;
+      font-weight: 600;
+
+  }
+
+  &__video {
+      background-image: url(https://www.elegantthemes.com/preview/Divi/wp-content/uploads/2014/11/leaves-video-cover.jpg);
+  background-size: cover;
+  height:30vh;
+  }
+}
+
+
+
+.spotlights {
+
+    padding:2%;
+    @include respond(tablet-landscape) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        // grid-template-rows: 1fr 1fr;
+    }
+
+    &__link-contaioner {
+        text-align: center;
+        padding:2%;
+    }    
+
+}
+
+
+  .spotlight {
+    //   border:1px solid red;
+      padding:1rem;
+      display:grid;
+      grid-gap:1rem;
+      justify-items: center;
+      text-align: center;
+      grid-template-columns: 1fr;
+      grid-template-rows: max-content 1fr;
+
+      @include respond(tablet-landscape) {
+        grid-template-columns: 20% 1fr;
+        grid-template-rows: 1fr;
+        text-align: left;
+        justify-items: left;
+      }
+
+
+    &__icon {
+      align-self: start;
+      @include respond(tablet-landscape) {
+        justify-self:right;
+      }
+
+    }
+
+    &__title, &__name {
+      color: #333;
+      text-transform: capitalize;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      font-weight: bolder;
+    }
+
+    &__text {
+      color:#898989;
+      margin-bottom: 1rem;
+    }
+  
+  }
+
+
+.courses {
+  color:#3c3b37;
+  font-size: 1.4rem;
+
+  & li:not(:last-child) {
+    border-bottom: solid .1rem #ccc;
+}
+
+  .course {
+
+    // display:grid;
+    // grid-template-columns:  1fr 1.5fr .5fr;
+    // padding:1rem;
+    // grid-gap:2rem;
+
+    text-align: left;
+
+
+
+
+
+    display: grid;
+    grid-template-columns: 1.25fr 3fr;
+    padding: 1rem;
+    grid-gap:1rem;
+
+
+    @include respond(tablet-portrait) {
+        grid-template-columns:  1fr 2.5fr .5fr;
+    }
+
+
+    
+
+    &__picture {
+      border-radius: .5rem;
+      overflow: hidden;
+    }
+
+    &__main {
+
+      & > p {
+        margin-top: .5rem;
+    }  
+       
+
+    }
+
+    &__title {
+      font-size:1.6rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 1rem;
+
+      @include respond(tablet-portrait) {
+        font-size: 2rem;
+      }
+
+    }
+
+    &__headline {
+      font-weight: lighter;
+      display: none;
+
+
+      @include respond(tablet-portrait) {
+        display: initial;
+        font-size: 1.8rem;
+      }
+    }
+
+    // &__instructor {
+
+
+    // }
+
+    // &__general {
+
+    // }
+
+    &__price {
+
+      grid-column: 2/3;
+      font-weight: bolder;
+
+      @include respond(tablet-portrait) {
+        grid-column: 3/4;
+        text-align: right;
+        font-size: 2rem;
+
+    }
+
+    }
+
+  }
+}
+
+.course-details {
+
+  padding:1rem;
+  margin-top: 16rem;
+
+   @include respond(tablet-portrait) {
+
+      text-align: center;
+      font-size: 2rem;
+  }
+
+
+  &__picture {
+    border-radius: .5rem;
+    overflow: hidden;
+  }
+
+  &__main {
+    & > p {
+      margin-top: 1rem;
+      font-weight: lighter;
+  }  
+     
+
+  }
+
+  &__title {
+    font-size:2.4rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 2rem 0;
+
+    @include respond(tablet-portrait) {
+      font-size: 3rem;
+    }
+
+  }
+
+  &__price-container {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__price {
+    grid-column: 2/3;
+    font-weight: bolder;
+    font-size: 4rem;
+    padding:2rem;
+
+  }
+
+  &__money-back {
+    padding:2rem;
+    color:#777;
+  }
+
+  &__objectives {
+    padding:2rem;
+
+    background-color:#f6f6f6;
+
+    & h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+  }
+
+}

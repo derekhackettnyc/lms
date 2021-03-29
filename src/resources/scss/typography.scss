@@ -1,0 +1,158 @@
+.font-size {
+    &--nornal {
+      font-size: inherit;
+    }
+    &--xsmall {
+      font-size:50%
+    }    
+    &--small {
+      font-size:80%
+    }
+    &--medium {
+      font-size:120%;
+    }
+
+    &--large {
+      font-size:150%
+    }
+    &--larger {
+      font-size:200%;
+    }
+    &--big {
+      font-size: 300%;
+    }
+    &--bigger {
+      font-size: 350%;
+    }
+    &--huge {
+      font-size: 500%;
+    }
+    &--massive {
+      font-size: 700%;
+    }
+}
+
+
+.main-heading {
+  text-transform:uppercase;
+  padding:5%;
+  border-radius: 5px;
+&--main {
+      font-size: 10rem; 
+      letter-spacing: .1rem; 
+      font-weight: 600; 
+      line-height: 10rem;
+      display: block; 
+      @include respond(tablet-portrait) {
+          font-size:10rem;
+          line-height: 9rem;
+      }
+  }
+
+&--sub {
+  font-size: 3rem;
+  margin-top:1rem;
+  @include respond(tablet-portrait) {
+    font-size: 5rem;
+  } 
+  font-weight: 200; 
+  display: block; 
+} 
+
+&--desc {
+  font-size: 2rem;
+  margin-top:1rem;
+  @include respond(tablet-portrait) {
+    font-size: 2rem;
+  } 
+  display: block; 
+}
+
+}
+
+.heading-primary {
+  // font-size:3rem;
+  @include respond(tablet-portrait) {
+    font-size: 8rem;
+  }
+}
+
+
+.page-heading {
+
+  margin-top: 10rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .3rem;
+  padding-top: 12vh;
+
+  padding-left: 5vw;
+
+  height: 25vh;
+  background: white url(/assets/images/background-texture.jpg) no-repeat left / cover;
+
+  @include respond(tablet-portrait) {
+    font-size: 3.5rem;
+  }
+
+}
+
+.subheading {
+  font-size:50%;
+}
+
+
+
+
+
+.paragraph {
+  position: relative;
+  margin: 0 auto;
+  padding:2rem;
+  background-color: white;
+  @include respond(tablet-portrait) {
+    padding:5rem;
+    font-size: 2.5rem; 
+    line-height: 3rem;
+    
+    &--50 {
+      width:50%;
+    }
+    &--80 {
+      width:80%;
+    } 
+  }   
+}
+
+
+.hero-heading {
+text-transform:uppercase;
+text-align: center;
+
+&--main {
+      font-size: 90%;
+      letter-spacing: .3rem; 
+      font-weight: 700; 
+      display: block; 
+      @include respond(tablet-portrait) {
+          font-size:200%;
+      }
+      @include respond(tablet-landscape) {
+        font-size:300%;
+      } 
+  }
+
+&--sub {
+  font-size: 50%;
+  margin-top:2%;
+  font-weight: lighter;
+  display: block; 
+  @include respond(tablet-portrait) {
+    font-size: 100%;
+    // color:red;
+  } 
+
+} 
+}
+

@@ -119,29 +119,16 @@
 
   .course {
 
-    // display:grid;
-    // grid-template-columns:  1fr 1.5fr .5fr;
-    // padding:1rem;
-    // grid-gap:2rem;
-
     text-align: left;
-
-
-
-
-
     display: grid;
     grid-template-columns: 1.25fr 3fr;
-    padding: 1rem;
+    padding:2rem;
     grid-gap:1rem;
-
 
     @include respond(tablet-portrait) {
         grid-template-columns:  1fr 2.5fr .5fr;
-    }
-
-
-    
+        padding: 3rem 10rem;
+    } 
 
     &__picture {
       border-radius: .5rem;

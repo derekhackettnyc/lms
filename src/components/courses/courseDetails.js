@@ -14,14 +14,11 @@ const CourseDetails = (props) => {
 
     React.useEffect(() => {
         (async () => {
+
             const responseOne = await coursesAPI.get(`/courses/${id}`)
-
-            console.log("responseOne.data.catagories", responseOne.data.catagories)
-
             const responseMany = await coursesAPI.get(`/courses/`)
 
             setCourse(responseOne.data)
-
             // Get a list of courses that have same topic as one user is currently viewing
             setOtherCourses(responseMany.data.filter(course => course.catagories[2] === responseOne.data.catagories[2]))
 
@@ -77,7 +74,7 @@ const CourseDetails = (props) => {
                     {
                         otherCourses.filter(other => other.id !== course.id) // remove the orginal from list
                             .slice(0, 5) // limit to 5
-                            .map(course => <Course course={course} />) // display the courses
+                            .map(course => <Course course={course} key={course.id}/>) // display the courses
                     }
                 </ul>
             </section>

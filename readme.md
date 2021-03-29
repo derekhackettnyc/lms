@@ -2,10 +2,10 @@
 
 This app uses the handy tool JSON server to fake a REST API. So 2 steps are involved to get this app running.
 
-1. Install JSON Server. 
+1. Download the Repository.
+2. Install as normal.
+3. CD to the 'server' folder
+4. npm install
+5. npm start
+6. All systems ago !
 
-First you must install npm files for the fake REST API - located in folder server. db.json is our database
-
-2. Install npm packages for the app as normal
-
-Thanks for looking.

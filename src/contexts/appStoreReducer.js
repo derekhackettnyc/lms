@@ -1,14 +1,8 @@
 import { useReducer } from 'react'
 
 export const initialState = {
-    query:'',
-    product: null,
-    products: [],
+    courses: [],
     loading: false,
-    countDown: {
-        deadline: 'Dec, 1, 2021',
-        message: 'Get ready. XMAS begins in ... 😱'
-    },
     menuDrawOpened: false,
     navigation: null,
     openDropDown: '',
@@ -21,24 +15,7 @@ export const appStoreReducer = (state, { type, payload }) => {
         case 'FETCH_COURSES': {
             return {
                 ...state,
-                products: payload,
-                product: null
-            }
-
-        }
-        case 'UPDATE_CURRENT': {
-            return {
-                ...state,
-                current: payload
-            }
-
-        }
-        case "FETCH_PRODUCT": {
-
-            return {
-                ...state,
-                product: payload.length === 0 ? null : payload[0],
-                action: 'fetch',
+                courses: payload,
             }
         }
         case "ASYNC_START": {
@@ -74,6 +51,5 @@ export const appStoreReducer = (state, { type, payload }) => {
             return state
     }
 }
-
 
 export const CreateStore = () => useReducer(appStoreReducer, initialState) 

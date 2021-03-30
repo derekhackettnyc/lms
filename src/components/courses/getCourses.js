@@ -23,7 +23,7 @@ const lookUpTable = {
     topic: 2
 }
 
-const GetProducts = (props) => {
+const GetCourses = (props) => {
 
     const { state, dispatch } = useContext(AppStoreContext)
     const { catagory, subcatagory, topic, query } = props.match.params;
@@ -83,21 +83,21 @@ const GetProducts = (props) => {
 
         const itemsTally = {
             main: { development: 1 }, // main
-            sub: state.products.reduce((acc, cur) => {
+            sub: state.courses.reduce((acc, cur) => {
                 cur.catagories[1] in acc ? acc[cur.catagories[1]]++ : acc[cur.catagories[1]] = 1 // subCatagory
                 return acc
             }, {}),
-            topic: state.products.reduce((acc, cur) => {
+            topic: state.courses.reduce((acc, cur) => {
                 cur.catagories[2] in acc ? acc[cur.catagories[2]]++ : acc[cur.catagories[2]] = 1 // topic
                 return acc
             }, {})
         }
         setCount(itemsTally)
 
-    }, [state.products, query])
+    }, [state.courses, query])
 
 
-    if (state.products.length === 0 && query !== '')
+    if (state.courses.length === 0 && query !== '')
         return (
             <div style={{ textAlign: "center", marginTop: '20rem', marginBottom: "3rem" }}>
                 <i className="fas fa-exclamation-triangle fa-9x" style={{ color: "orangered", marginBottom: "3rem" }}></i>
@@ -115,19 +115,19 @@ const GetProducts = (props) => {
                     {
                         query ? // When a search/query is requested, display filtering choices to the user
                             <>
-                                <h1 className="page-heading">{`Totol of ${state.products.length} courses for : ${query}`}</h1>
+                                <h1 className="page-heading">{`Totol of ${state.courses.length} courses for : ${query}`}</h1>
                                 <FilterButtons lists={{sub:count.sub, topic:count.topic}} handleClick={setFilter} selected={filter[1]}/>
                             </>
                             : // otherwise, the user selected an option from the main menu, just display the details regarding this menu selection. No filtering required.
                             <>
-                                <h1 className="page-heading">{`${subcatagory} | ${topic}  - ${state.products.length} courses`}</h1>
+                                <h1 className="page-heading">{`${subcatagory} | ${topic}  - ${state.courses.length} courses`}</h1>
                             </>
                     }
 
-                    <InfiniteScroll pageStart={1} loader={<Spinner key={0} />} loadMore={() => setPtr(ptr + perPage)} hasMore={(ptr + perPage <= state.products.length - 1)} initialLoad={false}>
+                    <InfiniteScroll pageStart={1} loader={<Spinner key={0} />} loadMore={() => setPtr(ptr + perPage)} hasMore={(ptr + perPage <= state.courses.length - 1)} initialLoad={false}>
                         <ul className="courses">
                             {
-                                state.products
+                                state.courses
                                     .filter(course => course.catagories[lookUpTable[filter[0]]] === filter[1])
                                     .slice(0, ptr + perPage)
                                     .map(course => <Course course={course} key={course.id}/>) // display the courses
@@ -185,4 +185,4 @@ const GetProducts = (props) => {
 
 }
 
-export default GetProducts
+export default GetCourses

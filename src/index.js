@@ -4,11 +4,15 @@ import { BrowserRouter } from 'react-router-dom'
 import { AppStore } from './contexts/AppStore';
 import App from './components/App'
 
+import ScrollToTop from './components/ui/ScrollToTop'
+
 ReactDom.render(
     <BrowserRouter>
-        <AppStore >
-            <App />
-        </AppStore>
+        <ScrollToTop>
+            <AppStore >
+                <App />
+            </AppStore>
+        </ScrollToTop>
     </BrowserRouter>,
     document.querySelector('#root')
 )

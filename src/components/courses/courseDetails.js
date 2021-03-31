@@ -83,12 +83,10 @@ const CourseDetails = (props) => {
                     }
                 </ul>
                 <div style={{padding:'6rem'}}>
-                    <h2 className="section__heading ">Similar Best Seller Courses with 4.6 <i className="fas fa-star" style={{ color: 'orange' }}></i> </h2>
+                    <h2 className="section__heading ">Similar Best Seller Courses over 4.5 <i className="fas fa-star" style={{ color: 'orange' }}></i> </h2>
                     <SlickSlider slides={sliderCourses.filter(slide => 
-                        slide.badges[0] && slide.badges[0].badge_family === "bestseller" &&
-                        slide.rating > 4.6
-
-                        ).slice(0,8)} />
+                        slide.badges[0] && slide.badges[0].badge_family === "bestseller" && slide.rating > 4.6
+).slice(0,8)} />
                 </div>
             </section>
 

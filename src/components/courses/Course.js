@@ -15,7 +15,7 @@ const Course = ({ course }) => {
                     <p className="course__headline" dangerouslySetInnerHTML={{ __html: course.headline }} />
                     <p>{course.visible_instructors[0].display_name}</p>
                     <p>{course.rating.toFixed(1)} <i className="fas fa-star" style={{ color: 'orange' }}></i> | {course.num_reviews} (reviews)</p>
-                    <p>{`${course.content_info} | ${course.num_published_lectures} | ${course.instructional_level_simple}`}</p>
+                    <p>{course.content_info} | {course.num_published_lectures} <i className="fas fa-video"></i> | {course.instructional_level_simple}</p>
                 </div>
                 <div className="course__price">
                     {`$${Math.floor(Math.random() * (170 - 120 + 1) + 120)}.99`}

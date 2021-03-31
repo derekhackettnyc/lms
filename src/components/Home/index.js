@@ -22,138 +22,138 @@ const Home = () => {
             <section className="section blog">
                 <h2 className="blog-heading">Top Categories</h2>
 
-                <div className="blog-entry">
-                    <div className="blog-entry__header">
+                <div className="catagory-card">
+                    <div className="catagory-card__header">
                         <div>
                             <img src="/assets/images/medical.jpeg" alt="medical" />
                         </div>
                     </div>
-                    <div className="blog-entry__content">
-                        <h3 className="blog-entry__title">Medicine and Health</h3>
+                    <div className="catagory-card__content">
+                        <h3 className="catagory-card__title">Medicine and Health</h3>
                         <p>
                             <span>3,689 students</span>
                         </p>
-                        <p className="blog-entry__blurb">
+                        <p className="catagory-card__blurb">
                             This is one area we should all be interested in. Medical treatment is changing all
                             the time. Researchers are finding ways to keep us alive much longer than previous
                             generations.
                         </p>
                     </div>
                 </div>
-                <div className="blog-entry">
-                    <div className="blog-entry__header">
+                <div className="catagory-card">
+                    <div className="catagory-card__header">
                         <div>
                             <img src="/assets/images/design.png" alt="design" />
                         </div>
                     </div>
-                    <div className="blog-entry__content">
-                        <h3 className="blog-entry__title">Design</h3>
+                    <div className="catagory-card__content">
+                        <h3 className="catagory-card__title">Design</h3>
                         <p>
                             <span>67,159 students</span>
                         </p>
-                        <p className="blog-entry__blurb">
+                        <p className="catagory-card__blurb">
                             Our graphic design courses can prepare you for a wide range of careers, from video game design to marketing. Whether you want to learn a new design software like Affinity Designer, improve your drawing skills, or start your own design business
                         </p>
                     </div>
                 </div>
-                <div className="blog-entry">
-                    <div className="blog-entry__header">
+                <div className="catagory-card">
+                    <div className="catagory-card__header">
                         <div>
                             <img src="/assets/images/cryptocurrency.jpeg" alt="cryptocurrency" />
                         </div>
                     </div>
-                    <div className="blog-entry__content">
-                        <h3 className="blog-entry__title">Cryptocurrency</h3>
+                    <div className="catagory-card__content">
+                        <h3 className="catagory-card__title">Cryptocurrency</h3>
                         <p>
                             <span>1,209 students</span>
                         </p>
-                        <p className="blog-entry__blurb">
+                        <p className="catagory-card__blurb">
                             Whether you need an introduction to the basics of blockchain and cryptocurrency trading, or a more advanced primer on currencies like Bitcoin, Ethereum, or Altcoin
                         </p>
                     </div>
                 </div>
 
 
-                <div className="blog-entry">
-                    <div className="blog-entry__header">
+                <div className="catagory-card">
+                    <div className="catagory-card__header">
                         <div>
                             <img src="/assets/images/marketing.jpeg" alt="Golden Meadow" />
                         </div>
                     </div>
-                    <div className="blog-entry__content">
-                        <h3 className="blog-entry__title">Digital Marketing</h3>
+                    <div className="catagory-card__content">
+                        <h3 className="catagory-card__title">Digital Marketing</h3>
                         <p>
                             <span>56,052 students</span>
                         </p>
-                        <p className="blog-entry__blurb">
+                        <p className="catagory-card__blurb">
                             Understanding online marketing channels can feel almost as overwhelming as being on the receiving end of digital marketing campaigns.
                         </p>
                     </div>
                 </div>
 
-                <div className="blog-entry">
-                    <div className="blog-entry__header bg--pink">
+                <div className="catagory-card">
+                    <div className="catagory-card__header bg--pink">
                         <div>
                             <img src="/assets/images/photography.jpeg" alt="Golden Meadow" />
                         </div>
                     </div>
-                    <div className="blog-entry__content">
-                        <h3 className="blog-entry__title">photography</h3>
+                    <div className="catagory-card__content">
+                        <h3 className="catagory-card__title">photography</h3>
                         <p>
                             <span>977,342 students</span>
                         </p>
-                        <p className="blog-entry__blurb">
+                        <p className="catagory-card__blurb">
                             We offers a comprehensive selection of photography courses for pros and beginners alike. Whether you’re interested in camera tutorials, nature and landscape photography, starting your own wedding photo business, or taking the perfect shot regardless of the subject, we have a course for you.
                         </p>
                     </div>
                 </div>
 
-                <div className="blog-entry">
-                    <div className="blog-entry__header">
+                <div className="catagory-card">
+                    <div className="catagory-card__header">
                         <div>
                             <img src="/assets/images/communication.jpeg" alt="Communications" />
                         </div>
                     </div>
-                    <div className="blog-entry__content">
-                        <h3 className="blog-entry__title">Communications</h3>
+                    <div className="catagory-card__content">
+                        <h3 className="catagory-card__title">Communications</h3>
                         <p>
                             <span>2,559 students</span>
                         </p>
-                        <p className="blog-entry__blurb">
+                        <p className="catagory-card__blurb">
                             provide the specialized skills and knowledge necessary for individuals to advance in their career by learning the techniques and strategies for communicating effectively, whether for negotiation, or media purposes.
                         </p>
                     </div>
                 </div>
 
                 <Link to='/search/development'>
-                <div className="blog-entry blog-entry--active">
-                    <div className="blog-entry__header bg--skyblue">
+                <div className="catagory-card catagory-card--active">
+                    <div className="catagory-card__header bg--skyblue">
                         <div>
                             <img src="/assets/images/Web-Developer-Skills.jpeg" alt="Gourmet Cupcakes" />
                         </div>
                     </div>
-                    <div className="blog-entry__content">
-                        <h3 className="blog-entry__title">Development</h3>
+                    <div className="catagory-card__content">
+                        <h3 className="catagory-card__title">Development</h3>
                         <p>
                             <span>8,659,829 students</span>
                         </p>
-                        <p className="blog-entry__blurb">
+                        <p className="catagory-card__blurb">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies ut nibh nec cursus. Curabitur porttitor nibh a tellus egestas, sit amet interdum nisl imperdiet. Fusce imperdiet diam odio, ut viverra metus fringilla vel. Nulla aliquam porttitor libero. Cras...
                         </p>
                     </div>
                 </div>
                 </Link>
 
-                <div className="blog-entry">
-                    <div className="blog-entry__header bg--wine">
-                        <p className="blog-entry__paragraph" style={{ textAlign: 'center' }}>
+                <div className="catagory-card">
+                    <div className="catagory-card__header bg--wine">
+                        <p className="catagory-card__paragraph" style={{ textAlign: 'center' }}>
                             <i className="fas fa-question-circle fa-6x"></i>
                         </p>
                     </div>
-                    <div className="blog-entry__content">
-                        <h3 className="blog-entry__title">Not sure?</h3>
+                    <div className="catagory-card__content">
+                        <h3 className="catagory-card__title">Not sure?</h3>
 
-                        <p className="blog-entry__blurb">
+                        <p className="catagory-card__blurb">
                             All courses have a 30-day money-back guarantee
                         </p>
                     </div>

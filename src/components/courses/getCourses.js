@@ -9,19 +9,26 @@ import Spinner from '../ui/Spinner'
 import coursesAPI from '../../apis/courses'
 import FilterButtons from './FilterButtons'
 
-// Each course contains a property called catagories, 
+// Each course contains a property called categories, 
 // mainCatagory, subCatagroy, topic
 
 // example:
-// catagories:["development","web","react"]
+// categories:["development","web","react"]
 // 
-// lookupTables is used - using computed member access operator to get the desired 'catagory'
+// lookupTables is used - using computed member access operator to get the desired 'category'
+
+const MAIN = 0
+const SUB = 1
+const TOPIC = 2
 
 const lookUpTable = {
     main: 0,
     sub: 1,
     topic: 2
 }
+
+const wait = ms => new Promise(resolve => setTimeout(resolve, ms))
+
 
 const GetCourses = (props) => {
 
@@ -42,12 +49,14 @@ const GetCourses = (props) => {
 
             dispatch({ type: "ASYNC_START" })
 
+            await wait(700) // for development only
+
             // the user selected a menu item
             const response = await coursesAPI.get('/courses')
 
             if (query) {
 
-                // Since we are not using a real database with all its power, we grab all the content from our mock 'server' api
+                // Since we are not using a real database with all its powers, we grab all the content from our mock 'server' api
                 // and do our own LIKE filtering based ONLY on the title field of each course using the string method includes (case sensitive)
 
                 const toLowerCaseQuery = query.toLowerCase()
@@ -64,7 +73,7 @@ const GetCourses = (props) => {
                 dispatch({ type: "FETCH_COURSES", payload: filtedData })
             }
             else {
-                // otherwise, compare the corresponding porperties from props.match.params with each course catagories
+                // otherwise, compare the corresponding porperties from props.match.params with each course categories
                 const filted = response.data.filter(course => course.catagories[1] === subcatagory && course.catagories[2] === topic)
                 dispatch({ type: "FETCH_COURSES", payload: filted })
             }
@@ -75,35 +84,22 @@ const GetCourses = (props) => {
         })()
     }, [dispatch, catagory, subcatagory, topic, query])
 
-
-
     useEffect(() => {
 
-        // Basically, tally up each of the catagories e.g catagories:["development","web","react"].
+         // Basically, tally up each of the categories e.g categories:["development","web","react"].
 
-        const itemsTally = {
-            main: { development: 1 }, // main
-            sub: state.courses.reduce((acc, cur) => {
-                cur.catagories[1] in acc ? acc[cur.catagories[1]]++ : acc[cur.catagories[1]] = 1 // subCatagory
-                return acc
-            }, {}),
-            topic: state.courses.reduce((acc, cur) => {
-                cur.catagories[2] in acc ? acc[cur.catagories[2]]++ : acc[cur.catagories[2]] = 1 // topic
-                return acc
-            }, {})
-        }
-        setCount(itemsTally)
+        const groupTally = group => state.courses.reduce((acc, { catagories }) => {
+            acc[catagories[group]] = (acc[catagories[group]] || 0) + 1
+            return acc
+        }, {})
+
+        setCount({
+            main: groupTally(MAIN),
+            sub: groupTally(SUB),
+            topic: groupTally(TOPIC)
+        })
 
     }, [state.courses, query])
-
-
-    if (state.courses.length === 0 && query !== '')
-        return (
-            <div style={{ textAlign: "center", marginTop: '20rem', marginBottom: "3rem" }}>
-                <i className="fas fa-exclamation-triangle fa-9x" style={{ color: "orangered", marginBottom: "3rem" }}></i>
-                <h2 >OOPs...nothing found using search query : {query}</h2>
-            </div>
-        )
 
     return (
         <Fragment>
@@ -115,13 +111,25 @@ const GetCourses = (props) => {
                     {
                         query ? // When a search/query is requested, display filtering choices to the user
                             <>
-                                <h1 className="page-heading">{`Totol of ${state.courses.length} courses for : ${query}`}</h1>
-                                <FilterButtons lists={{sub:count.sub, topic:count.topic}} handleClick={setFilter} selected={filter[1]}/>
+                                {
+                                    state.courses.length > 0 ?
+                                        <>
+                                            <h1 className="page-heading">{`Totol of ${state.courses.length} courses for : ${query}`}</h1>
+                                            {/* <FilterButtons lists={{ main:count.main, sub: count.sub, topic: count.topic }} handleClick={setFilter} selected={filter[1]} /> */}
+                                            <FilterButtons lists={{ sub: count.sub, topic: count.topic }} handleClick={setFilter} selected={filter[1]} />
+
+                                        </>
+                                        :
+                                        <>
+                                            <div style={{ textAlign: "center", marginTop: '20rem', marginBottom: "3rem" }}>
+                                                <i className="fas fa-exclamation-triangle fa-9x" style={{ color: "orangered", marginBottom: "3rem" }}></i>
+                                                <h2 >OOPs...nothing found using search query : {query}</h2>
+                                            </div>
+                                        </>
+                                }
                             </>
                             : // otherwise, the user selected an option from the main menu, just display the details regarding this menu selection. No filtering required.
-                            <>
-                                <h1 className="page-heading">{`${subcatagory} | ${topic}  - ${state.courses.length} courses`}</h1>
-                            </>
+                            <h1 className="page-heading">{`${subcatagory} | ${topic}  - ${state.courses.length} courses`}</h1>
                     }
 
                     <InfiniteScroll pageStart={1} loader={<Spinner key={0} />} loadMore={() => setPtr(ptr + perPage)} hasMore={(ptr + perPage <= state.courses.length - 1)} initialLoad={false}>
@@ -130,7 +138,7 @@ const GetCourses = (props) => {
                                 state.courses
                                     .filter(course => course.catagories[lookUpTable[filter[0]]] === filter[1])
                                     .slice(0, ptr + perPage)
-                                    .map(course => <Course course={course} key={course.id}/>) // display the courses
+                                    .map(course => <Course course={course} key={course.id} />) // display the courses
                             }
                         </ul>
                     </InfiniteScroll>
@@ -143,7 +151,6 @@ const GetCourses = (props) => {
 
                         <ul className="spotlights">
                             <li className="spotlight">
-                                {/* <i className="fas fa-blog fa-2x spotlight__icon"></i> */}
                                 <i className="fas fa-hourglass-half fa-2x spotlight__icon"></i>
                                 <div className="spotlight__blurb-box">
                                     <h3 className="spotlight__title">Go at your own pace</h3>
@@ -152,7 +159,6 @@ const GetCourses = (props) => {
                                 </div>
                             </li>
                             <li className="spotlight">
-                                {/* <i className="fas fa-2x fa-chess-knight spotlight__icon"></i> */}
                                 <i className="fas fa-chalkboard-teacher fa-2x spotlight__icon"></i>
                                 <div className="spotlight__blurb-box">
                                     <h3 className="spotlight__title">Learn from industry experts</h3>
@@ -161,7 +167,6 @@ const GetCourses = (props) => {
                                 </div>
                             </li>
                             <li className="spotlight">
-                                {/* <i className="fas fa-2x fa-drafting-compass spotlight__icon"></i> */}
                                 <i className="fas fa-video fa-2x spotlight__icon"></i>
                                 <div className="spotlight__blurb-box">
                                     <h3 className="spotlight__title">Find video courses on almost any topic</h3>
@@ -174,9 +179,7 @@ const GetCourses = (props) => {
                         <div className="align--center margins--small">
                             <button className="fadeIn">Learn More</button>
                         </div>
-
                     </section>
-
                 </section>
 
             }

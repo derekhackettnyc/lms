@@ -1,6 +1,6 @@
 
 
-.blog-entry {
+.catagory-card {
   border-width: 1px;
   border-style: solid;
   border-color: #d8d8d8;
@@ -167,15 +167,6 @@
       }
     }
 
-    // &__instructor {
-
-
-    // }
-
-    // &__general {
-
-    // }
-
     &__price {
 
       grid-column: 2/3;
@@ -198,6 +189,8 @@
   padding:1rem;
   margin-top: 16rem;
 
+
+
    @include respond(tablet-portrait) {
 
       text-align: center;
@@ -208,6 +201,8 @@
   &__picture {
     border-radius: .5rem;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
   }
 
   &__main {
@@ -261,4 +256,31 @@
 
   }
 
+}
+
+
+// .slick-next {
+
+//     border:3px solid black;
+//     background: black;
+//     right:10px;
+//     width:inherit;
+//     height:inherit;
+//     opacity:0;
+//     color:white;
+// }
+
+// .slick-dots {
+//     bottom: 25px;
+// }
+
+// .slick-dots li button::before {
+//     font-size: 1.5rem;
+//     opacity: .5;
+//     color: white;
+// }
+
+.slick-prev:before, .slick-next:before{
+  color: $sapphire;
+  font-size: 4rem;
 }

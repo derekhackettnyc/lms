@@ -1,6 +1,7 @@
 import React from 'react'
 import coursesAPI from '../../apis/courses'
 import Course from './Course'
+import SlickSlider from '../ui/SlickSlider'
 
 // Fetch and displays the course based on id
 // example /development/web/react/1362070
@@ -11,6 +12,7 @@ const CourseDetails = (props) => {
 
     const [course, setCourse] = React.useState(null)
     const [otherCourses, setOtherCourses] = React.useState([])
+    const [sliderCourses, setSliderCourses] = React.useState([])
 
     React.useEffect(() => {
         (async () => {
@@ -21,6 +23,8 @@ const CourseDetails = (props) => {
             setCourse(responseOne.data)
             // Get a list of courses that have same topic as one user is currently viewing
             setOtherCourses(responseMany.data.filter(course => course.catagories[2] === responseOne.data.catagories[2]))
+            setSliderCourses(responseMany.data.filter(course => course.catagories[0] === responseOne.data.catagories[0]))
+
 
         })()
     }, [])
@@ -41,7 +45,7 @@ const CourseDetails = (props) => {
                     <p>created by <span style={{ color: '#0073cf' }}>{course.visible_instructors[0].display_name}</span></p>
                     <p>{course.rating.toFixed(1)} <i className="fas fa-star" style={{ color: 'orange' }}></i> | {course.num_reviews} (reviews)</p>
                     <p>{course.num_subscribers} students</p>
-                    <p>{`${course.content_info} | ${course.num_published_lectures} | ${course.instructional_level_simple}`}</p>
+                    <p>{course.content_info} | {course.num_published_lectures} <i className="fas fa-video"></i> | {course.instructional_level_simple}</p>
                     <p style={{ backgroundColor: '#FCD900', padding: course.badges[0] ? '1rem' : 'none', textAlign: 'center', textTransform: 'uppercase', fontWeight: 'bold' }}>{course.badges[0] && course.badges[0].badge_text}</p>
                 </div>
                 <div className="course-details__price-container">
@@ -68,15 +72,20 @@ const CourseDetails = (props) => {
                     </ul>
                 </div>
             </div>
+    
             <section>
                 <h2 className="section__heading ">Students also bought</h2>
                 <ul className="courses" style={{ padding: "6rem" }}>
                     {
                         otherCourses.filter(other => other.id !== course.id) // remove the orginal from list
                             .slice(0, 5) // limit to 5
-                            .map(course => <Course course={course} key={course.id}/>) // display the courses
+                            .map(course => <Course course={course} key={course.id} />) // display the courses
                     }
                 </ul>
+                <div style={{padding:'6rem'}}>
+                    <h2 className="section__heading ">Similar Courses</h2>
+                    <SlickSlider slides={sliderCourses.slice(0, 8)} />
+                </div>
             </section>
 
         </>

@@ -15,6 +15,7 @@ export const appStoreReducer = (state, { type, payload }) => {
         case 'FETCH_COURSES': {
             return {
                 ...state,
+                menuDrawOpened: false,
                 courses: payload,
             }
         }

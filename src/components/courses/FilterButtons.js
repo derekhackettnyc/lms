@@ -1,48 +1,19 @@
 import React from 'react'
+import FilterButton from './FilterButton'
 
-// of course should be one  ... last minute change as i didnt really like the oldfilter using drop down .. late now...
+// This component generates a list of buttons that will be able to filtered the search data
 
-const FilterButtons = ({ lists, handleClick, selected = 'NONE' }) => {
-
-    return (
-        <div className="filter">
-            <ul className="filter__list">
-                {
-                    lists.sub && Object.entries(lists.sub)
-                        .map(([key, value]) => (
-                            <li key={key}>
-                                <button
-                                    className="filter__button"
-                                    style={{ backgroundColor: selected === key ? 'green' : '#0073cf' }}
-                                    value={key}
-                                    onClick={() => handleClick(["sub", key])}
-                                >
-                                    {`${key} (${value})`}
-                                </button>
-                            </li>
-                        ))
-                }
-                {
-                    lists.topic && Object.entries(lists.topic)
-                        .map(([key, value]) => (
-                            <li key={key}>
-                                <button
-                                    className="filter__button"
-                                    style={{ backgroundColor: selected === key ? 'green' : '#0073cf' }}
-                                    value={key}
-                                    onClick={() => handleClick(["topic", key])}
-                                >
-                                    {`${key} (${value})`}
-                                </button>
-                            </li>
-                        ))
-                }
-                <li>
-                    <button className="filter__button" onClick={() => handleClick([])}>RESET</button>
-                </li>
-            </ul>
-        </div>
-    )
-}
+const FilterButtons = ({ lists = {}, handleClick, selected = 'NONE' }) => (
+    <div className="filter">
+        <ul className="filter__list">
+            {
+                Object.entries(lists).map(list => <FilterButton list={list} key={list[0]} handleClick={handleClick} selected={selected} />)
+            }
+            <li>
+                <button className="filter__button" onClick={() => handleClick([])}>RESET</button>
+            </li>
+        </ul>
+    </div>
+)
 
 export default FilterButtons

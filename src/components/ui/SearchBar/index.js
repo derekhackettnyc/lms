@@ -12,8 +12,11 @@ const SearchBar = ({history}) => {
 
     if (!query) // Return if no query submiited
       return
+
+      const term = query // save query
+      setQuery('')   // reset the search bar
       
-    history.push(`/search/${query}`) // route GetCourses
+    history.push(`/search/${term}`) // route GetCourses
 
   }
 

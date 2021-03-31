@@ -23,7 +23,7 @@ const MainMenu = props => {
     const handleClickEvent = (nav) => {
         dispatch({type:'OPEN_DROPDOWN', payload:''})
         dispatch({type:'SELECT_NAVIGATION', payload:nav})
-        dispatch({type:'MENUDRAW_OPENED', payload:false})
+        // dispatch({type:'MENUDRAW_OPENED', payload:false})
     }
 
     const handleTouchStart = (category) => {

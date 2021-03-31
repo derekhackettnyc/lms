@@ -29,12 +29,12 @@ export const mainNavMenu = {
     photography: {
         title: "Photography",
         sub: {
-            digital: {
-                title: "Digital",
-                sub: {
-                    photography: { title: "Photography" },
-                }
-            },
+            // digital: {
+            //     title: "Digital",
+            //     sub: {
+            //         digital: { title: "digital" },
+            //     }
+            // },
             video: {
                 title: "Video",
                 sub: {
